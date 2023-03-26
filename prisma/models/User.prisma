@@ -1,0 +1,5 @@
+model Users {
+    id String @id
+    reputation Int @default(0)
+    settings Json @default("{}")
+}
