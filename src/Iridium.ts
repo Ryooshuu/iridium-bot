@@ -13,7 +13,5 @@ export class Iridium extends SapphireClient {
             .register(new ProviderStore().registerPath(join(this.rootData.root, "providers")));
 
         this.login(process.env.IRIDIUM_BOT_TOKEN);
-        console.log(this.stores.get("providers"));
-
     }
 }
