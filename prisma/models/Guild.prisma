@@ -1,0 +1,6 @@
+model Guild {
+    id String @id
+    settings Json @default("{}")
+
+    @@map("guilds")
+}

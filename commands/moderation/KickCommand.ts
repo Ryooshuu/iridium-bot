@@ -29,10 +29,10 @@ export class KickCommand extends Command {
 
     public async messageRun(message: Message, args: Args) {
         try {
-            let user = await args.pick("user");
-            let reason = await args.pick("string").catch(() => undefined);
+            const user = await args.pick("user");
+            const reason = await args.pick("string").catch(() => undefined);
 
-            await message.guild!.members.kick(user, reason);
+            await message.guild?.members.kick(user, reason);
 
             let content = `${user.username} has been kicked off of the server successfully.`;
             if (reason) {
@@ -46,14 +46,15 @@ export class KickCommand extends Command {
     }
 
     public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
-        let user = interaction.options.getUser("user");
-        let reason = interaction.options.getString("reason", false);
+        const user = interaction.options.getUser("user");
+        const reason = interaction.options.getString("reason", false);
 
         if (!user) {
             await interaction.reply("The user you are trying to kick does not exist in the server.");
             return;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         if (await this.kickUser(interaction.guild!, user)) {
             let message = `${user.username} has been kicked off of the server successfully.`;
             if (reason) {

@@ -7,4 +7,4 @@ export const Colors = {
     Success: 0x4AE05E,
     Failure: 0xE04A4A,
     Warning: 0xE09f4A
-}
+};

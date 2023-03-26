@@ -24,7 +24,7 @@ export class Provider<O extends ProviderOptions = ProviderOptions> extends Piece
         } else {
             // Attempt to get an error message from the response
             let message: string | undefined;
-            let bodyBuffer = await response.arrayBuffer().then(Buffer.from);
+            const bodyBuffer = await response.arrayBuffer().then(Buffer.from);
 
             try {
                 if (response.headers.get("content-type")?.includes("json")) {
@@ -47,6 +47,7 @@ export class Provider<O extends ProviderOptions = ProviderOptions> extends Piece
     }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ProviderRequestOptions extends RequestInit {
 
 }

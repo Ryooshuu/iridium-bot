@@ -1,5 +1,5 @@
 import { SapphireClient, SapphireClientOptions } from "@sapphire/framework";
-import { getRootData } from '@sapphire/pieces';
+import { getRootData } from "@sapphire/pieces";
 import { join } from "path";
 import { ProviderStore } from "./stores/ProviderStore";
 

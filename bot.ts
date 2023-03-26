@@ -8,4 +8,4 @@ new Iridium({
     intents: [GatewayIntentBits.MessageContent],
     loadMessageCommandListeners: true,
     defaultPrefix: process.env.IRIDIUM_PREFIX,
-})
+});
