@@ -14,6 +14,8 @@
     },
     "include": [
         "src/**/*.ts",
-        "types/**/*.d.ts"
+    ],
+    "files": [
+        "types/pieces.d.ts"
     ]
 }
