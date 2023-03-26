@@ -8,10 +8,9 @@ export class Iridium extends SapphireClient {
 
     constructor(options: SapphireClientOptions & { intents: number | number[] }) {
         super(options);
+
         this.stores
             .register(new ProviderStore().registerPath(join(this.rootData.root, "providers")));
-
-            this.stores.get("providers")
 
         this.login(process.env.IRIDIUM_BOT_TOKEN);
         console.log(this.stores.get("providers"));
