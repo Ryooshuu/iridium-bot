@@ -13,9 +13,7 @@
         "noFallthroughCasesInSwitch": true
     },
     "include": [
-        "src/**/*.ts"
-    ],
-    "files": [
-        "types/pieces.d.ts"
+        "src/**/*.ts",
+        "types/**/*.d.ts"
     ]
 }
