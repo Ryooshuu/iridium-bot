@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import { Listener } from "@sapphire/framework";
 import { ButtonBuilder, ButtonStyle, ComponentType, EmbedBuilder, Guild } from "discord.js";
 import { Colors } from "../src/util/Constants";
@@ -5,13 +7,13 @@ import { Colors } from "../src/util/Constants";
 interface Risk {
     severity: RiskSeverity;
     message: string;
-};
+}
 
 enum RiskSeverity {
     Low,
     Medium,
     High
-};
+}
 
 export class GuildCreateListener extends Listener {
     public constructor(context: Listener.Context, options: Listener.Options) {
@@ -84,8 +86,10 @@ export class GuildCreateListener extends Listener {
             embed.setThumbnail(guild.iconURL());
 
             // Get the development guild
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             this.container.client.guilds.fetch(process.env.IRIDIUM_DEVELOPMENT_GUILD!).then((devGuild) => {
                 // Get the development guild's log channel
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 devGuild.channels.fetch(process.env.IRIDIUM_GUILD_LOG_CHANNEL!).then((logChannel) => {
                     // Send the embed
                     if (logChannel?.isTextBased()) {
