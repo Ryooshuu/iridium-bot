@@ -65,7 +65,7 @@ export class MessageCreateListener extends Listener<typeof Events.MessageCreate>
 
         const self = await message.guild?.members.fetchMe();
 
-        if (!self || message.channel.permissionsFor(self)?.has([
+        if (!self || !message.channel.permissionsFor(self)?.has([
             PermissionFlagsBits.SendMessages,
             PermissionFlagsBits.ViewChannel
         ])) {
