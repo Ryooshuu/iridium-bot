@@ -1,7 +1,8 @@
 import { ChatInputCommand, Command } from "@sapphire/framework";
 import { ChatInputCommandInteraction, Message } from "discord.js";
+import { IridiumCommand } from "../../src/structures/IridiumCommand";
 
-export class PingCommand extends Command {
+export class PingCommand extends IridiumCommand {
     public constructor(context: Command.Context, options: Command.Options) {
         super(context, {
             ...options,
