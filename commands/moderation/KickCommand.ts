@@ -1,7 +1,8 @@
 import { Args, ChatInputCommand, Command } from "@sapphire/framework";
 import { Guild, Message, User } from "discord.js";
+import { IridiumCommand } from "../../src/structures/IridiumCommand";
 
-export class KickCommand extends Command {
+export class KickCommand extends IridiumCommand {
     constructor(context: Command.Context, options: Command.Options) {
         super(context, {
             ...options,
