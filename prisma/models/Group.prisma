@@ -1,0 +1,15 @@
+import { PermissionLevel } from "../enums/PermissionLevel"
+import { GroupAssignment } from "./GroupAssignment"
+
+model Group {
+    id Int @id @default(autoincrement())
+    name String
+    short_name String
+    description String
+    color String @default("#FFFFFF")
+    permission_level PermissionLevel @default(Default)
+    public Boolean @default(true)
+    assignments GroupAssignment[]
+
+    @@map("groups")
+}
