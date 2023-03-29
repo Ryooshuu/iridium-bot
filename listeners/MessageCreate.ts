@@ -81,20 +81,20 @@ export class MessageCreateListener extends Listener<typeof Events.MessageCreate>
     private checkMentionPrefix(message: Message): string | null {
 		if (this.container.client.disableMentionPrefix) return null;
 		// If the content is shorter than 20 characters, or does not start with `<@` then skip early:
-		if (message.content.length < 20 || !message.content.startsWith('<@')) return null;
+		if (message.content.length < 20 || !message.content.startsWith("<@")) return null;
 
 		// Calculate the offset and the ID that is being provided
 		const [offset, id] =
-			message.content[2] === '&'
+			message.content[2] === "&"
 				? [3, message.guild?.roles.botRoleFor(this.container.client.id!)?.id]
-				: [message.content[2] === '!' ? 3 : 2, this.container.client.id];
+				: [message.content[2] === "!" ? 3 : 2, this.container.client.id];
 
 		if (!id) return null;
 
 		const offsetWithId = offset + id.length;
 
-		// If the mention doesn't end with `>`, skip early:
-		if (message.content[offsetWithId] !== '>') return null;
+		// If the mention doesn"t end with `>`, skip early:
+		if (message.content[offsetWithId] !== ">") return null;
 
 		// Check whether or not the ID is the same as the managed role ID:
 		const mentionId = message.content.substring(offset, offsetWithId);

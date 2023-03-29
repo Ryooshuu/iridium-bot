@@ -6,5 +6,4 @@ export const Events = {
 
     // Command based events
     CommandRun: "commandRun",
-
-}
+};

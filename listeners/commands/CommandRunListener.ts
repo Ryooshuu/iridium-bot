@@ -1,5 +1,5 @@
 import { Listener, MessageCommand, MessageCommandAcceptedPayload, Result } from "@sapphire/framework";
-import { Stopwatch } from '@sapphire/stopwatch';
+import { Stopwatch } from "@sapphire/stopwatch";
 import { Message } from "discord.js";
 import { Events } from "../../src/util/Events";
 
@@ -65,8 +65,8 @@ export class CommandRunListener extends Listener<typeof Events.CommandRun> {
                 ...payload,
                 args,
                 duration: -1
-            })
-        })
+            });
+        });
         
         message.client.emit(Events.MessageCommandFinish, message, command, {
 			...payload,
