@@ -14,6 +14,6 @@ new Iridium({
         GatewayIntentBits.Guilds,
         GatewayIntentBits.MessageContent,
     ],
-    loadMessageCommandListeners: true,
+    loadMessageCommandListeners: false,
     defaultPrefix: process.env.IRIDIUM_PREFIX,
 });
