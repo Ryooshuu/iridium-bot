@@ -1,0 +1,6 @@
+enum PermissionLevel {
+    Default
+    Moderator
+    Administrator
+    Owner
+}
