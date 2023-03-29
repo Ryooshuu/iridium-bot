@@ -5,7 +5,7 @@
 		<a href="https://github.com/sponsors/irisu01"><img src="https://img.shields.io/badge/support-support%20us!-important" /></a>
   </p>
 	<p>
-    <a href="https:/github.com/iridiumbot/iridium/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/iridiumbot/iridium?style=flat-square" /></a>
+    <a href="https:/github.com/iridiumbot/iridium/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/iridiumbot/iridium" /></a>
 		<a href="https://github.com/iridiumbot/iridium/issues"><img src="https://img.shields.io/github/issues/iridiumbot/iridium" /></a>
 		<a href="https://github.com/iridiumbot/iridium/actions"><img src="https://img.shields.io/github/actions/workflow/status/iridiumbot/iridium/tsc.yml" /></a>
 		<img src="https://img.shields.io/tokei/lines/github/iridiumbot/iridium" />
