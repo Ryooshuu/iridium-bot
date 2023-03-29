@@ -1,5 +1,5 @@
-import { ChatInputCommandAcceptedPayload, Listener } from "@sapphire/framework";
-import { EmbedHelper } from "../src/util/EmbedHelper";
+import { ChatInputCommandErrorPayload, Listener } from "@sapphire/framework";
+import { EmbedHelper } from "../../../src/util/EmbedHelper";
 
 export class ChatCommandErrorListener extends Listener {
     public constructor(context: Listener.Context, options: Listener.Options) {
@@ -9,7 +9,7 @@ export class ChatCommandErrorListener extends Listener {
         });
     }
 
-    public run(error: Error, payload: ChatInputCommandAcceptedPayload) {
+    public run(error: Error, payload: ChatInputCommandErrorPayload) {
         if (payload.interaction.isRepliable()) {
             payload.interaction.reply({
                 embeds: [

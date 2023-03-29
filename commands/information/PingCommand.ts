@@ -1,5 +1,5 @@
 import { ChatInputCommand, Command } from "@sapphire/framework";
-import { Message } from "discord.js";
+import { ChatInputCommandInteraction, Message } from "discord.js";
 
 export class PingCommand extends Command {
     public constructor(context: Command.Context, options: Command.Options) {
@@ -10,7 +10,7 @@ export class PingCommand extends Command {
             aliases: ["pong"]
         });
     }
-    
+
     public override registerApplicationCommands(registry: ChatInputCommand.Registry) {
         registry.registerChatInputCommand((builder) =>
             builder.setName("ping").setDescription("Ping bot to see if it is alive")
@@ -18,12 +18,20 @@ export class PingCommand extends Command {
     }
 
     public async messageRun(message: Message) {
-        const ping = await message.channel.send("Pinging...");
-        ping.edit(`Pong! Latency is ${ping.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(this.container.client.ws.ping)}ms`);
+        await this.runPing(message);
     }
 
-    public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
-        await interaction.reply("Pinging...");
-        interaction.editReply(`Pong! Latency is ${Date.now() - interaction.createdTimestamp}ms. API Latency is ${Math.round(this.container.client.ws.ping)}ms`);
+    public async chatInputRun(interaction: ChatInputCommandInteraction) {
+        await this.runPing(interaction);
+    }
+
+    public async runPing(payload: Message | ChatInputCommandInteraction) {
+        const ping = await payload.reply("Pinging...");
+
+        if (payload instanceof Message) {
+            ping.edit(`Pong! Latency is ${ping.createdTimestamp - payload.createdTimestamp}ms. API Latency is ${Math.round(this.container.client.ws.ping)}ms`);
+        } else if (payload instanceof ChatInputCommandInteraction) {
+            payload.editReply(`Pong! Latency is ${Date.now() - payload.createdTimestamp}ms. API Latency is ${Math.round(this.container.client.ws.ping)}ms`);
+        }
     }
 }
