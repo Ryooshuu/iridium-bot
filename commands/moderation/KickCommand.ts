@@ -34,13 +34,7 @@ export class KickCommand extends IridiumCommand {
             const reason = await args.pick("string").catch(() => undefined);
 
             await message.guild?.members.kick(user, reason);
-
-            let content = `${user.username} has been kicked off of the server successfully.`;
-            if (reason) {
-                content += ` The reason given was: ${reason}`;
-            }
-
-            await message.reply(content);
+            await message.reply(`${user.username} has been kicked off of the server successfully.`);
         } catch {
             await message.reply("Unable to kick user. Does the bot have any permissions to do so?");
         }
@@ -50,28 +44,19 @@ export class KickCommand extends IridiumCommand {
         const user = interaction.options.getUser("user");
         const reason = interaction.options.getString("reason", false);
 
-        if (!user) {
-            await interaction.reply("The user you are trying to kick does not exist in the server.");
-            return;
-        }
+        if (!user)
+            return await interaction.reply("The user you are trying to kick does not exist in the server.");
 
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        if (await this.kickUser(interaction.guild!, user)) {
-            let message = `${user.username} has been kicked off of the server successfully.`;
-            if (reason) {
-                message += ` The reason given was: ${reason}`;
-            }
-
-            await interaction.reply(message);
-            return;
-        }
+        if (await this.kickUser(interaction.guild!, user, reason ?? undefined))
+            return await interaction.reply(`${user.username} has been kicked off of the server successfully.`);
 
         await interaction.reply("Unable to kick user. Does the bot have any permissions to do so?");
     }
 
-    private async kickUser(guild: Guild, user: User): Promise<boolean> {
+    private async kickUser(guild: Guild, user: User, reason?: string): Promise<boolean> {
         try {
-            await guild.members.kick(user);
+            await guild.members.kick(user, reason);
             return true;
         } catch (e) {
             console.log(e);
