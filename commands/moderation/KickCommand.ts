@@ -18,12 +18,12 @@ export class KickCommand extends IridiumCommand {
                 .setDescription("Kick a user")
                 .addUserOption(b => b.setRequired(true)
                     .setName("user")
-                    .setDescription("The user you want to ban")
+                    .setDescription("The user you want to kick")
                 )
                 .addStringOption(b =>
                     b.setRequired(false)
                         .setName("reason")
-                        .setDescription("The reason you're banning this user")
+                        .setDescription("The reason you're kicking this user")
                 );
         });
     }
