@@ -17,8 +17,5 @@ export class IridiumCommandStore extends CommandStore {
                 }
             }
         }
-
-        console.log(this.values());
-
     }
 }
